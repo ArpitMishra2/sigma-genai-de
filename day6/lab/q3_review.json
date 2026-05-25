@@ -1,0 +1,35 @@
+{
+  "file": "queries/q3.sql",
+  "reviewed_at": "2026-05-25T15:38:31.949606",
+  "issues_found": 3,
+  "review": {
+    "issues": [
+      {
+        "severity": "Critical",
+        "category": "Correctness",
+        "title": "Missing customer_id in GROUP BY",
+        "line": "GROUP BY clause",
+        "problem": "The query is missing customer_id in the GROUP BY clause, which will cause an aggregation error.",
+        "fix": "GROUP BY customer_id, merchant_id"
+      },
+      {
+        "severity": "Medium",
+        "category": "Readability",
+        "title": "Case sensitivity in table names",
+        "line": "FROM FACT_TRANSACTIONS",
+        "problem": "Table names should be consistently cased to avoid confusion and potential errors.",
+        "fix": "FROM fact_transactions"
+      },
+      {
+        "severity": "Low",
+        "category": "Readability",
+        "title": "Lack of comments",
+        "line": "Entire query",
+        "problem": "The query lacks comments explaining the purpose and logic, which can be helpful for future maintainers.",
+        "fix": "Add comments explaining the purpose of each clause."
+      }
+    ],
+    "corrected_sql": "SELECT customer_id, merchant_id, SUM(amount)\nFROM fact_transactions\nJOIN dim_merchant ON fact_transactions.merchant_id = dim_merchant.merchant_id\nWHERE status = 'COMPLETED'\nGROUP BY customer_id, merchant_id;",
+    "summary": "The query had a critical correctness issue with the GROUP BY clause and some readability issues. The corrected query includes the missing customer_id in the GROUP BY clause and adheres to consistent casing."
+  }
+}

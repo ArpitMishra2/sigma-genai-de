@@ -1,0 +1,148 @@
+{
+  "directory": "queries/",
+  "reviewed_at": "2026-05-25T15:38:31.951224",
+  "files_reviewed": 4,
+  "total_issues": 12,
+  "files": [
+    {
+      "file": "queries/bad_query.sql",
+      "reviewed_at": "2026-05-25T15:38:18.160165",
+      "issues_found": 4,
+      "review": {
+        "issues": [
+          {
+            "severity": "Critical",
+            "category": "Correctness",
+            "title": "Incorrect grouping",
+            "line": "GROUP BY clause",
+            "problem": "The query is grouping by merchant_id instead of customer_id.",
+            "fix": "GROUP BY customer_id"
+          },
+          {
+            "severity": "Critical",
+            "category": "Correctness",
+            "title": "Missing filter for completed transactions",
+            "line": "WHERE clause",
+            "problem": "The query does not filter for completed transactions only.",
+            "fix": "WHERE status = 'COMPLETED'"
+          },
+          {
+            "severity": "Medium",
+            "category": "Readability",
+            "title": "Missing table aliases",
+            "line": "FROM clause",
+            "problem": "The query does not use table aliases, making it harder to read.",
+            "fix": "FROM sigma_analytics.fact_transactions t"
+          },
+          {
+            "severity": "Medium",
+            "category": "Readability",
+            "title": "Lack of comments",
+            "line": "Entire query",
+            "problem": "The query lacks comments explaining the logic.",
+            "fix": "/* Calculate total transaction amount per customer for completed transactions */"
+          }
+        ],
+        "corrected_sql": "SELECT t.customer_id, SUM(t.amount) AS total_amount\nFROM sigma_analytics.fact_transactions t\nWHERE t.status = 'COMPLETED'\nGROUP BY t.customer_id",
+        "summary": "The query had critical correctness issues and could benefit from readability improvements."
+      }
+    },
+    {
+      "file": "queries/my_query.sql",
+      "reviewed_at": "2026-05-25T15:38:22.867030",
+      "issues_found": 3,
+      "review": {
+        "issues": [
+          {
+            "severity": "Critical",
+            "category": "Correctness",
+            "title": "Missing customer_id in GROUP BY",
+            "line": "GROUP BY clause",
+            "problem": "The query is missing customer_id in the GROUP BY clause, which will cause an error.",
+            "fix": "GROUP BY customer_id, merchant_id"
+          },
+          {
+            "severity": "Medium",
+            "category": "Readability",
+            "title": "Case Sensitivity",
+            "line": "FACT_TRANSACTIONS",
+            "problem": "Table names should be consistent in case. SQL is case-insensitive in some environments, but it's best practice to keep naming consistent.",
+            "fix": "FROM fact_transactions"
+          },
+          {
+            "severity": "Medium",
+            "category": "Readability",
+            "title": "Lack of comments",
+            "line": "Entire query",
+            "problem": "The query lacks comments explaining its purpose and logic.",
+            "fix": "-- Calculate total transaction amount by merchant for completed transactions"
+          }
+        ],
+        "corrected_sql": "-- Calculate total transaction amount by merchant and customer for completed transactions\nSELECT customer_id, merchant_id, SUM(amount)\nFROM fact_transactions\nWHERE status = 'COMPLETED'\nGROUP BY customer_id, merchant_id;",
+        "summary": "The query had a critical correctness issue with the GROUP BY clause and some readability issues. It has been corrected and improved."
+      }
+    },
+    {
+      "file": "queries/q2.sql",
+      "reviewed_at": "2026-05-25T15:38:26.765728",
+      "issues_found": 2,
+      "review": {
+        "issues": [
+          {
+            "severity": "Critical",
+            "category": "Correctness",
+            "title": "Missing customer_id in GROUP BY",
+            "line": "GROUP BY clause",
+            "problem": "The query is missing customer_id in the GROUP BY clause, which will cause incorrect aggregation.",
+            "fix": "GROUP BY customer_id, merchant_id"
+          },
+          {
+            "severity": "Medium",
+            "category": "Readability",
+            "title": "Case Sensitivity",
+            "line": "Table names",
+            "problem": "Table names are in uppercase which is not consistent with typical SQL conventions.",
+            "fix": "SELECT customer_id, merchant_id, SUM(amount)\nFROM fact_transactions\nWHERE status = 'COMPLETED'\nGROUP BY customer_id, merchant_id;"
+          }
+        ],
+        "corrected_sql": "SELECT customer_id, merchant_id, SUM(amount)\nFROM fact_transactions\nWHERE status = 'COMPLETED'\nGROUP BY customer_id, merchant_id;",
+        "summary": "The query had a correctness issue with missing customer_id in the GROUP BY clause and a readability issue with inconsistent case usage."
+      }
+    },
+    {
+      "file": "queries/q3.sql",
+      "reviewed_at": "2026-05-25T15:38:31.949606",
+      "issues_found": 3,
+      "review": {
+        "issues": [
+          {
+            "severity": "Critical",
+            "category": "Correctness",
+            "title": "Missing customer_id in GROUP BY",
+            "line": "GROUP BY clause",
+            "problem": "The query is missing customer_id in the GROUP BY clause, which will cause an aggregation error.",
+            "fix": "GROUP BY customer_id, merchant_id"
+          },
+          {
+            "severity": "Medium",
+            "category": "Readability",
+            "title": "Case sensitivity in table names",
+            "line": "FROM FACT_TRANSACTIONS",
+            "problem": "Table names should be consistently cased to avoid confusion and potential errors.",
+            "fix": "FROM fact_transactions"
+          },
+          {
+            "severity": "Low",
+            "category": "Readability",
+            "title": "Lack of comments",
+            "line": "Entire query",
+            "problem": "The query lacks comments explaining the purpose and logic, which can be helpful for future maintainers.",
+            "fix": "Add comments explaining the purpose of each clause."
+          }
+        ],
+        "corrected_sql": "SELECT customer_id, merchant_id, SUM(amount)\nFROM fact_transactions\nJOIN dim_merchant ON fact_transactions.merchant_id = dim_merchant.merchant_id\nWHERE status = 'COMPLETED'\nGROUP BY customer_id, merchant_id;",
+        "summary": "The query had a critical correctness issue with the GROUP BY clause and some readability issues. The corrected query includes the missing customer_id in the GROUP BY clause and adheres to consistent casing."
+      }
+    }
+  ]
+}

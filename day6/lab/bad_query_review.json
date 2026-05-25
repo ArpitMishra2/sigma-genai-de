@@ -1,0 +1,43 @@
+{
+  "file": "queries/bad_query.sql",
+  "reviewed_at": "2026-05-25T15:38:18.160165",
+  "issues_found": 4,
+  "review": {
+    "issues": [
+      {
+        "severity": "Critical",
+        "category": "Correctness",
+        "title": "Incorrect grouping",
+        "line": "GROUP BY clause",
+        "problem": "The query is grouping by merchant_id instead of customer_id.",
+        "fix": "GROUP BY customer_id"
+      },
+      {
+        "severity": "Critical",
+        "category": "Correctness",
+        "title": "Missing filter for completed transactions",
+        "line": "WHERE clause",
+        "problem": "The query does not filter for completed transactions only.",
+        "fix": "WHERE status = 'COMPLETED'"
+      },
+      {
+        "severity": "Medium",
+        "category": "Readability",
+        "title": "Missing table aliases",
+        "line": "FROM clause",
+        "problem": "The query does not use table aliases, making it harder to read.",
+        "fix": "FROM sigma_analytics.fact_transactions t"
+      },
+      {
+        "severity": "Medium",
+        "category": "Readability",
+        "title": "Lack of comments",
+        "line": "Entire query",
+        "problem": "The query lacks comments explaining the logic.",
+        "fix": "/* Calculate total transaction amount per customer for completed transactions */"
+      }
+    ],
+    "corrected_sql": "SELECT t.customer_id, SUM(t.amount) AS total_amount\nFROM sigma_analytics.fact_transactions t\nWHERE t.status = 'COMPLETED'\nGROUP BY t.customer_id",
+    "summary": "The query had critical correctness issues and could benefit from readability improvements."
+  }
+}

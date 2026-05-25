@@ -1,0 +1,27 @@
+{
+  "file": "queries/q2.sql",
+  "reviewed_at": "2026-05-25T15:38:26.765728",
+  "issues_found": 2,
+  "review": {
+    "issues": [
+      {
+        "severity": "Critical",
+        "category": "Correctness",
+        "title": "Missing customer_id in GROUP BY",
+        "line": "GROUP BY clause",
+        "problem": "The query is missing customer_id in the GROUP BY clause, which will cause incorrect aggregation.",
+        "fix": "GROUP BY customer_id, merchant_id"
+      },
+      {
+        "severity": "Medium",
+        "category": "Readability",
+        "title": "Case Sensitivity",
+        "line": "Table names",
+        "problem": "Table names are in uppercase which is not consistent with typical SQL conventions.",
+        "fix": "SELECT customer_id, merchant_id, SUM(amount)\nFROM fact_transactions\nWHERE status = 'COMPLETED'\nGROUP BY customer_id, merchant_id;"
+      }
+    ],
+    "corrected_sql": "SELECT customer_id, merchant_id, SUM(amount)\nFROM fact_transactions\nWHERE status = 'COMPLETED'\nGROUP BY customer_id, merchant_id;",
+    "summary": "The query had a correctness issue with missing customer_id in the GROUP BY clause and a readability issue with inconsistent case usage."
+  }
+}
