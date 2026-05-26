@@ -1,0 +1,16 @@
+{
+  "results": [
+    {
+      "unique_id": "model.sigma_dbt.stg_transactions",
+      "status": "success"
+    },
+    {
+      "unique_id": "model.sigma_dbt.mart_merchant_performance",
+      "status": "success"
+    },
+    {
+      "unique_id": "test.sigma_dbt.not_null_test",
+      "status": "fail"
+    }
+  ]
+}
