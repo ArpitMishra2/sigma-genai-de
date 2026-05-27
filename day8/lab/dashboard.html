@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sigma DataTech — DevOps & Observability Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div class="max-w-7xl mx-auto p-6">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h1 class="text-4xl font-bold">Sigma DataTech</h1>
+        <p class="text-gray-600 mt-2">Day 8 — DevOps + Quality + Observability Dashboard</p>
+      </div>
+      <div class="bg-green-100 text-green-700 px-4 py-2 rounded-2xl font-semibold shadow">
+        Pipeline Status: HEALTHY
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-sm text-gray-500">Bronze Rows</h2>
+        <p class="text-3xl font-bold mt-2">21</p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-sm text-gray-500">Silver Rows</h2>
+        <p class="text-3xl font-bold mt-2">14</p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-sm text-gray-500">Rows Dropped</h2>
+        <p class="text-3xl font-bold text-red-600 mt-2">7</p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-sm text-gray-500">Total Revenue</h2>
+        <p class="text-3xl font-bold text-green-600 mt-2">₹13,161</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      <div class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-2xl font-semibold mb-4">Pipeline Health Metrics</h2>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between mb-1">
+              <span>Quality Threshold</span>
+              <span>99.9%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-3">
+              <div class="bg-green-500 h-3 rounded-full" style="width: 99.9%"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-1">
+              <span>Pipeline Runtime</span>
+              <span>72 / 120 min</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-3">
+              <div class="bg-blue-500 h-3 rounded-full" style="width: 60%"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-1">
+              <span>Data Freshness</span>
+              <span>1.5 hrs</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-3">
+              <div class="bg-yellow-500 h-3 rounded-full" style="width: 75%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-2xl font-semibold mb-4">Transaction Status Breakdown</h2>
+        <div class="space-y-4">
+          <div class="flex items-center justify-between bg-green-100 p-4 rounded-xl">
+            <span class="font-medium">COMPLETED</span>
+            <span class="font-bold text-green-700">11</span>
+          </div>
+
+          <div class="flex items-center justify-between bg-red-100 p-4 rounded-xl">
+            <span class="font-medium">FAILED</span>
+            <span class="font-bold text-red-700">2</span>
+          </div>
+
+          <div class="flex items-center justify-between bg-yellow-100 p-4 rounded-xl">
+            <span class="font-medium">PENDING</span>
+            <span class="font-bold text-yellow-700">1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      <div class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-2xl font-semibold mb-4">Critical Alerts</h2>
+
+        <div class="space-y-4">
+          <div class="border-l-4 border-red-500 bg-red-50 p-4 rounded-lg">
+            <h3 class="font-semibold text-red-700">Duplicate Transaction Spike</h3>
+            <p class="text-sm text-gray-600 mt-1">Potential primary key violation risk in Silver layer.</p>
+          </div>
+
+          <div class="border-l-4 border-yellow-500 bg-yellow-50 p-4 rounded-lg">
+            <h3 class="font-semibold text-yellow-700">Data Freshness Warning</h3>
+            <p class="text-sm text-gray-600 mt-1">Pipeline nearing freshness SLO threshold.</p>
+          </div>
+
+          <div class="border-l-4 border-blue-500 bg-blue-50 p-4 rounded-lg">
+            <h3 class="font-semibold text-blue-700">New Payment Method Detected</h3>
+            <p class="text-sm text-gray-600 mt-1">Observability detected unseen payment category.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-2xl font-semibold mb-4">Morning Health Report</h2>
+
+        <ul class="space-y-3 text-gray-700">
+          <li>✅ Pipeline execution completed successfully</li>
+          <li>✅ No null values detected in Silver layer</li>
+          <li>⚠ 7 Bronze rows dropped during quality filtering</li>
+          <li>✅ 8 active merchants contributing revenue</li>
+          <li>✅ Revenue aggregation completed successfully</li>
+          <li>⚠ Review duplicate transaction prevention checks</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow p-6">
+      <h2 class="text-2xl font-semibold mb-4">CI/CD Pipeline Flow</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4 text-center">
+        <div class="bg-gray-100 p-4 rounded-xl shadow-sm">
+          <p class="font-semibold">Code Push</p>
+        </div>
+
+        <div class="bg-blue-100 p-4 rounded-xl shadow-sm">
+          <p class="font-semibold">Lint Check</p>
+        </div>
+
+        <div class="bg-yellow-100 p-4 rounded-xl shadow-sm">
+          <p class="font-semibold">pytest</p>
+        </div>
+
+        <div class="bg-purple-100 p-4 rounded-xl shadow-sm">
+          <p class="font-semibold">GE Validation</p>
+        </div>
+
+        <div class="bg-green-100 p-4 rounded-xl shadow-sm">
+          <p class="font-semibold">Deploy</p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-center text-gray-500 mt-10 text-sm">
+      Sigma Intelligence Platform — DevOps + Quality Brain Dashboard
+    </footer>
+  </div>
+</body>
+</html>
