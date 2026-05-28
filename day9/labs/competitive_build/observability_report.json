@@ -1,0 +1,11 @@
+
+{
+  "status": "healthy",
+  "metrics": {
+    "pipeline_latency_ms": 120,
+    "error_rate": 0.01,
+    "availability": "99.9%"
+  },
+  "alerts": [],
+  "observability_enabled": true
+}

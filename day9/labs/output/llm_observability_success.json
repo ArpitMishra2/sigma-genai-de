@@ -1,0 +1,6 @@
+{
+  "status": "success",
+  "phoenix_active": true,
+  "telemetry_verified": true,
+  "llm_observability_verified": true
+}

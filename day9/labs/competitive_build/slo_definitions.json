@@ -1,0 +1,18 @@
+
+{
+  "slos": [
+    {
+      "name": "Pipeline Success Rate",
+      "target": "99%"
+    },
+    {
+      "name": "Data Freshness",
+      "target": "15 minutes"
+    },
+    {
+      "name": "Error Budget",
+      "target": "1%"
+    }
+  ]
+}
+

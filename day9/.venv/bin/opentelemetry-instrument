@@ -1,0 +1,6 @@
+#!/Users/as-mac-1216/Desktop/Gen_Ai_pipellne/sigma-genai-de/day9/.venv/bin/python3.12
+import sys
+from opentelemetry.instrumentation.auto_instrumentation import run
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(run())
