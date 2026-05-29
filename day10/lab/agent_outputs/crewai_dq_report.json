@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-05-29T14:44:19.474324",
+  "crew_output": "*SIGMA DATATECH DATA QUALITY ALERT*  \n*Date:* 2023-10-10  \n*Status:* CRITICAL  \n*Issues:* 5 total — 2 critical, 2 high  \n*Top fix:* Review and adjust negative amount handling  \n*Next review:* 2023-10-11",
+  "tasks_completed": 3,
+  "agents": [
+    "Data Scout",
+    "SQL Surgeon",
+    "Quality Guardian"
+  ],
+  "student_judgment": "NOT ANSWERED"
+}
