@@ -1,0 +1,63 @@
+{
+  "run_id": "184125",
+  "results": [
+    {
+      "id": "TXN100441",
+      "merchant": "QuickMart",
+      "amount": 4521.5,
+      "decision": "PASS",
+      "expected": "PASS",
+      "correct": true,
+      "reason": "All fields are valid and the amount is reasonable for the merchant type.",
+      "latency_ms": 1113,
+      "tokens": 218
+    },
+    {
+      "id": "TXN100467",
+      "merchant": "FuelPlus",
+      "amount": -892.0,
+      "decision": "QUARANTINE",
+      "expected": "QUARANTINE",
+      "correct": true,
+      "reason": "Negative amount and future date",
+      "latency_ms": 783,
+      "tokens": 212
+    },
+    {
+      "id": "TXN100489",
+      "merchant": "Apollo Hospital",
+      "amount": 980000.0,
+      "decision": "FLAG",
+      "expected": "PASS",
+      "correct": false,
+      "reason": "Amount is greater than 500000 INR with no business context",
+      "latency_ms": 691,
+      "tokens": 223
+    },
+    {
+      "id": "TXN100512",
+      "merchant": "CloudStore",
+      "amount": 15230.0,
+      "decision": "QUARANTINE",
+      "expected": "QUARANTINE",
+      "correct": true,
+      "reason": "Unknown currency and future date",
+      "latency_ms": 608,
+      "tokens": 214
+    },
+    {
+      "id": "TXN100534",
+      "merchant": "CafeBlend",
+      "amount": 340.0,
+      "decision": "QUARANTINE",
+      "expected": "QUARANTINE",
+      "correct": true,
+      "reason": "The date is in the future.",
+      "latency_ms": 797,
+      "tokens": 212
+    }
+  ],
+  "correct": 4,
+  "total": 5,
+  "student_judgment": "Correct decisions : 4/5"
+}
