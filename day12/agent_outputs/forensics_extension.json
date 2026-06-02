@@ -1,0 +1,6 @@
+{
+  "extension_type": "check_cloudwatch",
+  "detection_rule": "Detect Kinesis throttling (PutRecord.Throttled > 0 in last 60 min)",
+  "implementation": "Added logic in check_cloudwatch.py to query AWS CloudWatch for PutRecord.Throttled metric. If value > 0, it flags the issue for the forensics agent.",
+  "status": "active"
+}
